@@ -1,6 +1,9 @@
 module.exports = function(grunt) {
     'use strict';
 
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         express: {
             app: {
@@ -75,17 +78,24 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
+            options: {
+                sourceMap: false,
+                mangle: false,
+                compress: false,
+                beautify: true
+            },
             app: {
                 files: {
-                    'dist/js/app.min.js': [
+                    'dist/js/dependencies.min.js': [
                         'bower_components/jquery/dist/jquery.js',
+                        'bower_components/momentjs/moment.js',
                         'bower_components/angular/angular.js',
                         'bower_components/angular-route/angular-route.js',
                         'bower_components/angular-spinner/angular-spinner.js',
                         'bower_components/angular-masonry/angular-masonry.js',
                         'bower_components/spin.js/spin.js',
+                        'bower_components/fizzy-ui-utils/utils.js',
                         'bower_components/get-style-property/get-style-property.js',
-                        'bower_components/get-size/get-size.js',
                         'bower_components/eventie/eventie.js',
                         'bower_components/doc-ready/doc-ready.js',
                         'bower_components/eventEmitter/EventEmitter.js',
@@ -93,8 +103,10 @@ module.exports = function(grunt) {
                         'bower_components/imagesloaded/imagesloaded.js',
                         'bower_components/outlayer/item.js',
                         'bower_components/outlayer/outlayer.js',
-                        'bower_components/masonry/dist/masonry.pkgd.js',
-                        'bower_components/momentjs/min/moment-with-locales.js',
+                        'bower_components/get-size/get-size.js',
+                        'bower_components/masonry/dist/masonry.pkgd.js'
+                    ],
+                    'dist/js/app.min.js': [
                         'build/app.js'
                     ]
                 }
@@ -157,23 +169,6 @@ module.exports = function(grunt) {
             }
         }
     });
-
-    grunt.loadNpmTasks('grunt-express-server');
-    grunt.loadNpmTasks('grunt-bower-task');
-    grunt.loadNpmTasks('grunt-ng-annotate');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-image-embed');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
-    grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-protractor-runner');
 
     grunt.registerTask('install', [ 'bower:install' ]);
 

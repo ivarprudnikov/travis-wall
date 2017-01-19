@@ -6,3 +6,6 @@
 
 # Bower
 /bower_components
+
+/.idea
+*.iml

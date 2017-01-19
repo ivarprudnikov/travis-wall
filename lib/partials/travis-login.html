@@ -1,26 +1,18 @@
 <input
-    id="travis-username"
-    name="username"
-    type="text"
-    placeholder="Travis username..."
-    autocomplete="off"
-    required
-    ng-model="user.username"
+        id="github-token"
+        name="token"
+        type="text"
+        placeholder="eg: 0e444ad48b47b400dd5e671234a5f15850a7b04d"
+        autocomplete="off"
+        required
+        ng-model="user.token"
 />
 
-<input
-    id="travis-token"
-    name="token"
-    type="password"
-    placeholder="Travis token..."
-    ng-model="user.token"
-/>
-
-<span class="error" ng-show="loginForm.username.$dirty && loginForm.$error.travis">
-    It seems the username/token is not valid or there is simply no repository to monitor...
+<span class="error" ng-show="loginForm.token.$dirty && loginForm.$error.github">
+    It seems the token is not valid or there is simply no repository to monitor...
 </span>
 
-<span class="process" ng-show="loginForm.username.$dirty && loginForm.$processing">
+<span class="process" ng-show="loginForm.token.$dirty && loginForm.$processing">
     Checking...
 </span>
 
